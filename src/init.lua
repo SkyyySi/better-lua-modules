@@ -3,12 +3,19 @@ setmetatable(module, module.__mt)
 module.__mt.__name = "SkyyySi"
 module.__mt.__index = module.__mt
 
+---@generic T1
+---@class SkyyySi.better-lua-module
+---@field __mt table
+---@field __properties {get: (fun(self: SkyyySi.better-lua-module): T1), set?: (fun(self: SkyyySi.better-lua-module, value: T1))}[]
+---@field __imutable boolean
+
 --- Create a new module
 ---@param args {name: string, imutable?: boolean}
 function module.create_module(args)
 	args = args or {}
 	assert(args.name, "The module must have a name")
 
+	---@type SkyyySi.better-lua-module
 	local new_module = {
 		__mt = {},
 		__properties = {},
